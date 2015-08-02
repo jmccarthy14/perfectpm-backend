@@ -1,4 +1,2 @@
-```
-npm install
-node server/server.js
-```
+    npm install
+    node server/server.js
