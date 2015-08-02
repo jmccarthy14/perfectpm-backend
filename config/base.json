@@ -5,6 +5,9 @@
 	"riak": {
 		"cluster": [
 			"localhost:8087"
-		]
+		],
+		"buckets": {
+			"tasks": "tasks"
+		}
 	}
 }

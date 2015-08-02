@@ -19,6 +19,7 @@
   "dependencies": {
     "basho-riak-client": "^1.5.1",
     "express": "^4.13.2",
+    "node-uuid": "^1.4.3",
     "tape": "^4.0.1"
   }
 }
