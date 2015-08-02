@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/jbwyme/perfectpm#readme",
   "dependencies": {
-    "express": "^4.13.2"
+    "basho-riak-client": "^1.5.1",
+    "express": "^4.13.2",
+    "tape": "^4.0.1"
   }
 }
