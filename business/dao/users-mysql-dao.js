@@ -1,11 +1,11 @@
 var pool = require('../../server/mysql-client');
 
-function createUser(uuid, first_name, last_name, email, cb) {
+function createUser(user, cb) {
 	pool.getConnection(function onConnection(err, connection) {
 		if(err) {
 			cb(err);
 		} else {
-			connection.query('insert into users (uuid, first_name, last_name, email) values (?,?,?,?)', [uuid, first_name, last_name, email], function(err, results) {
+			connection.query('insert into users (uuid, first_name, last_name, email) values (?,?,?,?)', [user.uuid, user.firstName, user.lastName, user.email], function(err, results) {
 				connection.release();
 				cb(err, results);
 			});

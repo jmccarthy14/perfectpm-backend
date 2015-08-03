@@ -3,8 +3,8 @@ var userService = require('../service/user-service');
 function createUser(req, res) {
 	// Minimal validation here, on api layer.
 	var user = req.body;
-	if(user.first_name && user.last_name && user.email) {
-		userService.createUser(user.first_name, user.last_name, user.email, function(err, result) {
+	if(user.firstName && user.lastName && user.email) {
+		userService.createUser(user, function(err, result) {
 			if(err) {
 				if(err.code === 'ER_DUP_ENTRY') {
 					res.status(400).send('A user with this email already exists');
@@ -16,7 +16,7 @@ function createUser(req, res) {
 			}
 		});
 	} else {
-		res.status(400).send('Validation error, be sure to include first_name, last_name and email');
+		res.status(400).send('Validation error, be sure to include firstName, lastName and email');
 	}
 }
 
