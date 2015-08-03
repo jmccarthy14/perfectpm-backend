@@ -2,15 +2,15 @@ var dbm = global.dbm || require('db-migrate');
 var type = dbm.dataType;
 
 exports.up = function(db, callback) {
-	db.createTable('tasks', {
+	db.createTable('projects', {
 		id: { type: 'int', primaryKey: true, autoIncrement: true },
-		name: { type: 'string' },
+		org_id: { type: 'int', notNull: true },
+		name: { type: 'string', notNull: true },
 		description: { type: 'string'},
-		estimate: 'int',
 		created_by_user_id: { type: 'int', notNull: true }
 	}, callback);
 };
 
 exports.down = function(db, callback) {
-	db.dropTable('tasks', callback);
+	db.dropTable('projects', callback);
 };
