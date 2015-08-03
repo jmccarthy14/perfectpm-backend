@@ -22,5 +22,8 @@
     "mysql": "^2.8.0",
     "node-uuid": "^1.4.3",
     "tape": "^4.0.1"
-  }
+  },
+  "scripts": {
+      "test": "node tests/index.js"
+   }
 }
