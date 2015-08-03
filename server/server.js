@@ -25,7 +25,5 @@ var gracefulShutdown = function () {
 
 
 process.on ('SIGTERM', gracefulShutdown);
-
-
 process.on ('SIGINT', gracefulShutdown);  
 
