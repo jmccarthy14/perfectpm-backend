@@ -4,7 +4,7 @@ function createOrg(req, res) {
 	var name = req.body.name;
 	orgService.createOrg(name, function(err, results) {
 		if(err) {
-			res.send('error: ' + json.stringify(err));
+			res.status(400).send('error: ' + json.stringify(err));
 		} else {
 			res.send('OK! ' + JSON.stringify(results));
 		}
@@ -17,7 +17,7 @@ function addUserToOrg(req, res) {
 
 	orgService.addUserToOrg(orgId, userId, function(err, results) {
 		if(err) {
-			res.send('error: ' + JSON.stringify(err));
+			res.status(400).send('error: ' + JSON.stringify(err));
 		} else {
 			res.send('OK! ' + JSON.stringify(results));
 		}

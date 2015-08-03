@@ -7,16 +7,16 @@ function createUser(req, res) {
 		userService.createUser(user.first_name, user.last_name, user.email, function(err, result) {
 			if(err) {
 				if(err.code === 'ER_DUP_ENTRY') {
-					res.send('A user with this email already exists');
+					res.status(400).send('A user with this email already exists');
 				} else { 
-					res.send('Error creating user: ' + JSON.stringify(err));
+					res.status(400).send('Error creating user: ' + JSON.stringify(err));
 				}
 			} else {
 				res.send('Created user: ' + JSON.stringify(result));
 			}
 		});
 	} else {
-		res.send('Validation error, be sure to include first_name, last_name and email');
+		res.status(400).send('Validation error, be sure to include first_name, last_name and email');
 	}
 }
 
