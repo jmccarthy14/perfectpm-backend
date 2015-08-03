@@ -5,8 +5,7 @@ function createTask(task, cb) {
 		if(err) {
 			cb(err);
 		} else {
-			var sql = 'insert into tasks (name) values ('+connection.escape(task.name) + ');';
-			connection.query('insert into tasks (name) values (?)', [task.name], function(err, results) {
+			connection.query('insert into tasks (name,description,estimate,created_by_user_id) values (?,?,?,?)', [task.name, task.description,task.estimate,task.createdByUserId], function(err, results) {
 				connection.release();
 				cb(err, results);
 			});

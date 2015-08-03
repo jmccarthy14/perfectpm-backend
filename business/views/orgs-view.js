@@ -1,8 +1,8 @@
-var orgService = require('../service/orgs-service');
+var orgsService = require('../service/orgs-service');
 
 function createOrg(req, res) {
 	var name = req.body.name;
-	orgService.createOrg(name, function(err, results) {
+	orgsService.createOrg(name, function(err, results) {
 		if(err) {
 			res.status(400).send('error: ' + json.stringify(err));
 		} else {
@@ -15,7 +15,7 @@ function addUserToOrg(req, res) {
 	var orgId = req.params.orgId;
 	var userId = req.params.userId;
 
-	orgService.addUserToOrg(orgId, userId, function(err, results) {
+	orgsService.addUserToOrg(orgId, userId, function(err, results) {
 		if(err) {
 			res.status(400).send('error: ' + JSON.stringify(err));
 		} else {

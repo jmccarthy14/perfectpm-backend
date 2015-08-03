@@ -19,6 +19,6 @@ app.post('/orgs', views.orgs.createOrg);
 
 app.post('/orgs/:orgId/users/:userId', views.orgs.addUserToOrg);
 
-app.get('/tasks', views.tasks);
+app.post('/tasks', views.tasks.createTask);
 
 module.exports = app;
