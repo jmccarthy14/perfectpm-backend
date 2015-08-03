@@ -9,7 +9,7 @@ function createUser(req, res) {
 				if(err.code === 'ER_DUP_ENTRY') {
 					res.status(400).send('A user with this email already exists');
 				} else { 
-					res.status(400).send('Error creating user: ' + JSON.stringify(err));
+					res.status(400).send('Error creating user: ' + err.message);
 				}
 			} else {
 				res.send('Created user: ' + JSON.stringify(result));
