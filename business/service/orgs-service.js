@@ -1,6 +1,6 @@
 var uuids = require('node-uuid');
 
-var orgDao = require('../dao/org-mysql-dao');
+var orgDao = require('../dao/orgs-mysql-dao');
 
 function createOrg(name, cb) {
 	if(typeof name === 'string') {
@@ -12,4 +12,8 @@ function createOrg(name, cb) {
 
 function addUserToOrg(userUuid, orgUuid) {
 
+}
+
+module.exports = {
+	'createOrg': createOrg
 }

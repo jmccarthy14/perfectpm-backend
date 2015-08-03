@@ -15,6 +15,8 @@ app.get('/health', function (req, res) {
 
 app.post('/users', views.users.createUser);
 
+app.post('/orgs', views.orgs.createOrg);
+
 app.get('/tasks', views.tasks);
 
 module.exports = app;

@@ -27,6 +27,20 @@ function getOrgByUuid(uuid, cb) {
 	});
 }
 
+function getOrgById(id, cb) {
+	pool.getConnection(function onConnection(err, connection) {
+		if(err) {
+			cb(err);
+		} else {
+			connection.query('select * from orgs where id = ?', [id], function(err, results) {
+				connection.release();
+				var result = results.length ? results[0] : undefined;
+				cb(err, result);
+			});
+		}
+	});
+}
+
 function getOrgIdFromUuid(uuid, cb) {
 	pool.getConnection(function onConnection(err, connection) {
 		if(err) {
@@ -40,4 +54,9 @@ function getOrgIdFromUuid(uuid, cb) {
 		}
 	});
 
+}
+
+module.exports = {
+	'createOrg': createOrg,
+	'getOrgById': getOrgById
 }
