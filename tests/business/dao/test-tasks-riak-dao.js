@@ -1,6 +1,6 @@
 var test = require('tape');
 
-var tasksDao = require('../../../business/dao/tasksdao');
+var tasksDao = require('../../../business/dao/riak/tasks-riak-dao');
 var riakClient = require('../../../server/riak-client.js');
 
 test('Can save a simple task object', function (assert) {

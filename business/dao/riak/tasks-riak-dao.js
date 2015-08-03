@@ -1,7 +1,7 @@
 var nodeUuid = require('node-uuid');
 
-var config = require('../../config/base');
-var riakClient = require('../../server/riak-client.js');
+var config = require('../../../config/base');
+var riakClient = require('../../../server/riak-client.js');
 
 /*
  * Fetches the task from Riak if one exists with the passed uuid.
