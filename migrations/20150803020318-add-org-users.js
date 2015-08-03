@@ -2,7 +2,7 @@ var dbm = global.dbm || require('db-migrate');
 var type = dbm.dataType;
 
 exports.up = function(db, callback) {
-	db.createTable('org_users', {
+	db.createTable('orgs_users', {
 		org_id: { 
 			type: 'int', 
 			primaryKey: true,
@@ -37,5 +37,5 @@ exports.up = function(db, callback) {
 };
 
 exports.down = function(db, callback) {
-	db.dropTable('org_users', callback);
+	db.dropTable('orgs_users', callback);
 };

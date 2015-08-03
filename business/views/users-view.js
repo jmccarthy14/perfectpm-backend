@@ -3,7 +3,6 @@ var userService = require('../service/user-service');
 function createUser(req, res) {
 	// Minimal validation here, on api layer.
 	var user = req.body;
-	console.log('req: '+ JSON.stringify(user));
 	if(user.first_name && user.last_name && user.email) {
 		userService.createUser(user.first_name, user.last_name, user.email, function(err, result) {
 			if(err) {
