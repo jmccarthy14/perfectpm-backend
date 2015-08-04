@@ -13,6 +13,20 @@ function createProject(project, cb) {
 	});
 }
 
+function getProjectWithTasks(projectId, cb) {
+	pool.getConnection(function onConnection(err, connection) {
+		if(err) {
+			cb(err);
+		} else {
+			connection.query('select * from projects p inner join projects_tasks pt on p.id = pt.project_id inner join tasks t on pt.task_id = t.id where p.id = ?', [projectId], function(err, results) {
+				connection.release();
+				cb(err, results);
+			});
+		}
+	});
+}
+
 module.exports = {
-	'createProject': createProject
+	'createProject': createProject,
+	'getProjectWithTasks': getProjectWithTasks
 }

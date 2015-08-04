@@ -23,7 +23,19 @@ function addTaskToProject(req, res) {
 	});
 }
 
+function getProjectWithTasks(req, res) {
+	var projectId = req.params.projectId;
+
+	projectsService.getProjectWithTasks(projectId, function(err, results) {
+		if(err) {
+			res.status(400).send('error: ' + JSON.stringify(err));
+		} else {
+			res.send('OK! ' + JSON.stringify(results));
+		}
+	});
+}
 module.exports = {
 	'addTaskToProject': addTaskToProject,
-	'createProject': createProject
+	'createProject': createProject,
+	'getProjectWithTasks': getProjectWithTasks
 };

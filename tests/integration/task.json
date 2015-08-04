@@ -1,6 +1,6 @@
 {
-	"name": "jim",
-	"description": "tester",
+	"name": "New Task",
+	"description": "A task that will always recur",
 	"estimate": 6,
 	"createdByUserId": 1
 }
