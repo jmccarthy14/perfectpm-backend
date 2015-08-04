@@ -18,7 +18,7 @@ function getUsersByOrg(id, cb) {
 		if(err) {
 			cb(err);
 		} else {
-			connection.query('select user_id from orgs_users where org_id = ?', [orgId], function(err, results) {
+			connection.query('select * from orgs_users ou inner join users u on ou.user_id = u.id where ou.org_id = ?', [orgId], function(err, results) {
 				connection.release();
 				cb(err, results);
 			});
@@ -27,6 +27,6 @@ function getUsersByOrg(id, cb) {
 }
 
 module.exports = {
-	"createOrgUser": createOrgUser,
-	"getUsersByOrg": getUsersByOrg
+	'createOrgUser': createOrgUser,
+	'getUsersByOrg': getUsersByOrg
 }

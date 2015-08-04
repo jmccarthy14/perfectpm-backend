@@ -2,12 +2,12 @@ var dbm = global.dbm || require('db-migrate');
 var type = dbm.dataType;
 
 exports.up = function(db, callback) {
-	db.createTable('project_tasks', {
+	db.createTable('projects_tasks', {
 		project_id: { 
 			type: 'int', 
 			primaryKey: true,
 			foreignKey: {
-				name: 'project_tasks_projects_project_id_fk',
+				name: 'projects_tasks_projects_project_id_fk',
 		        table: 'projects',
 		        rules: {
 					onDelete: 'CASCADE',
@@ -22,7 +22,7 @@ exports.up = function(db, callback) {
 			type: 'int', 
 			primaryKey: true,
 			foreignKey: {
-				name: 'project_tasks_tasks_task_id_fk',
+				name: 'projects_tasks_tasks_task_id_fk',
 		        table: 'tasks',
 		        rules: {
 					onDelete: 'CASCADE',
@@ -37,5 +37,5 @@ exports.up = function(db, callback) {
 };
 
 exports.down = function(db, callback) {
-	db.dropTable('project_tasks', callback);
+	db.dropTable('projects_tasks', callback);
 };

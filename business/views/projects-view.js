@@ -10,6 +10,20 @@ function createProject(req, res) {
 	});
 };
 
+function addTaskToProject(req, res) {
+	var projectId = req.params.projectId;
+	var taskId = req.params.taskId;
+
+	projectsService.addTaskToProject(projectId, taskId, function(err, results) {
+		if(err) {
+			res.status(400).send('error: ' + JSON.stringify(err));
+		} else {
+			res.send('OK! ' + JSON.stringify(results));
+		}
+	});
+}
+
 module.exports = {
+	'addTaskToProject': addTaskToProject,
 	'createProject': createProject
 };

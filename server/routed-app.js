@@ -23,4 +23,7 @@ app.post('/tasks', views.tasks.createTask);
 
 app.post('/projects', views.projects.createProject);
 
+app.post('/projects/:projectId/tasks/:taskId', views.projects.addTaskToProject);
+
+
 module.exports = app;
