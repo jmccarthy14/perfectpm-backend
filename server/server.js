@@ -10,15 +10,15 @@ var server = routedApp.listen(config.host.port, function () {
 
 
 var gracefulShutdown = function () {
-	console.log("Received kill signal, shutting down gracefully.");
+	console.log('Received kill signal, shutting down gracefully.');
 	server.close(function () {
-		console.log("Closed out remaining connections.");
+		console.log('Closed out remaining connections.');
 		process.exit();
 	});
 		  
 		   
 	setTimeout(function () {
-		console.error("Could not close connections in time, forcefully shutting down");
+		console.error('Could not close connections in time, forcefully shutting down');
 		process.exit();
 	}, 10*1000);
 };

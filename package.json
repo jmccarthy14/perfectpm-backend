@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "node tests/index.js",
-	"lint": "node node_modules/jshint/bin/jshint ./business/* ./server/*"
+    "lint": "node node_modules/jshint/bin/jshint ./business/* ./server/*",
+    "validate": "npm ls"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,12 @@
     "tape": "^4.0.1"
   },
   "devDependencies": {
-    "jshint": "^2.8.0"
-  }
+    "jshint": "^2.8.0",
+    "precommit-hook": "^3.0.0"
+  },
+  "pre-commit": [
+    "lint",
+    "validate",
+    "test"
+  ]
 }

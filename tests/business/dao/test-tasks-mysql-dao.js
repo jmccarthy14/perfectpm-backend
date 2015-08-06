@@ -5,7 +5,8 @@ var pool = require('../../../server/mysql-client');
 
 test('Try creating a simple task', function(assert) {
 	taskDao.createTask({
-		name: 'test_fella'
+		name: 'test_fella',
+		createdByUserId: 1
 	}, function onCreate(err, results) {
 		assert.error(err);
 		assert.ok(results);
@@ -16,7 +17,8 @@ test('Try creating a simple task', function(assert) {
 
 test('Try fetching saved task', function(assert) {
 	taskDao.createTask({
-		name: 'test_fetchme'
+		name: 'test_fetchme',
+		createdByUserId: 1
 	}, function onCreate(err, results) {
 		assert.error(err);
 		assert.ok(results);

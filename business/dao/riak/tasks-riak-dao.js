@@ -41,7 +41,7 @@ function saveTask(task, cb) {
 			key: taskUuid,
 			value: task
 		},
-		function storeValueResult(err, result) {
+		function storeValueResult(err) {
 			cb(err, taskUuid);
 	});
 }

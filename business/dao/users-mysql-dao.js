@@ -59,5 +59,6 @@ function getUserIdFromUuid(uuid, cb) {
 module.exports = {
 	'createUser': createUser,
 	'getUserById': getUserById,
-	'getUserIdFromUuid': getUserIdFromUuid
+	'getUserIdFromUuid': getUserIdFromUuid,
+	'getUserByUuid': getUserByUuid
 };
