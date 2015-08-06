@@ -1,62 +1,33 @@
 var orgsService = require('../service/orgs-service');
+var ppmResponseWrapper = require('../../server/ppm-response');
 
 function createOrg(req, res) {
 	var name = req.body.name;
-	orgsService.createOrg(name, function(err, results) {
-		if(err) {
-			res.status(400).send('error: ' + json.stringify(err));
-		} else {
-			res.send('OK! ' + JSON.stringify(results));
-		}
-	});
+	orgsService.createOrg(name, ppmResponseWrapper(res));
 }
 
 function addUserToOrg(req, res) {
 	var orgId = req.params.orgId;
 	var userId = req.params.userId;
 
-	orgsService.addUserToOrg(orgId, userId, function(err, results) {
-		if(err) {
-			res.status(400).send('error: ' + JSON.stringify(err));
-		} else {
-			res.send('OK! ' + JSON.stringify(results));
-		}
-	});
+	orgsService.addUserToOrg(orgId, userId, ppmResponseWrapper(res));
 }
 
 function addProjectToOrg(req, res) {
 	var orgId = req.params.orgId;
 	var projectId = req.params.projectId;
 
-	orgsService.addProjectToOrg(orgId, projectId, function(err, results) {
-		if(err) {
-			res.status(400).send('error: ' + JSON.stringify(err));
-		} else {
-			res.send('OK! ' + JSON.stringify(results));
-		}
-	});
+	orgsService.addProjectToOrg(orgId, projectId, ppmResponseWrapper(res));
 }
 
 function getOrgProjects(req, res) {
 	var orgId = req.params.orgId;
-	orgsService.getOrgProjects(orgId, function(err, results) {
-		if(err) {
-			res.status(400).send('error: ' + JSON.stringify(err));
-		} else {
-			res.send('OK! ' + JSON.stringify(results));
-		}
-	});
+	orgsService.getOrgProjects(orgId, ppmResponseWrapper(res));
 }
 
 function getOrgUsers(req, res) {
 	var orgId = req.params.orgId;
-	orgsService.getOrgUsers(orgId, function(err, results) {
-		if(err) {
-			res.status(400).send('error: ' + JSON.stringify(err));
-		} else {
-			res.send('OK! ' + JSON.stringify(results));
-		}
-	});
+	orgsService.getOrgUsers(orgId, ppmResponseWrapper(res));
 }
 
 module.exports = {
