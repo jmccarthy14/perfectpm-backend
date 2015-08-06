@@ -4,9 +4,13 @@
   "description": "a project management tool",
   "main": "server.js",
   "scripts": {
+	"bootstrap": "npm i && npm run reset-db",
+	"populate-db": "cd tests/integration && node server/server.js & sleep 2 && ./bootstrapData.sh",
     "test": "node tests/index.js",
     "lint": "node node_modules/jshint/bin/jshint ./business/* ./server/*",
-    "validate": "npm ls"
+    "validate": "npm ls",
+	"start": "node server/server.js",
+    "reset-db": "node_modules/db-migrate/bin/db-migrate reset && node_modules/db-migrate/bin/db-migrate up"
   },
   "repository": {
     "type": "git",
@@ -27,6 +31,7 @@
     "tape": "^4.0.1"
   },
   "devDependencies": {
+    "db-migrate": "^0.9.18",
     "jshint": "^2.8.0",
     "precommit-hook": "^3.0.0"
   },

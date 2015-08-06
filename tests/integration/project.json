@@ -1,6 +1,6 @@
 {
-	"orgId": 1,
-	"name": "Test Project",
-	"description": "a test rest project",
-	"createdByUserId": 1
+	"orgId": TORGID,
+	"name": "TNAME",
+	"description": "TDESCRIPT",
+	"createdByUserId": TCREATEDBYUSERID
 }
