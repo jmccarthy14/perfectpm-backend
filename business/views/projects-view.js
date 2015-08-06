@@ -23,6 +23,18 @@ function addTaskToProject(req, res) {
 	});
 }
 
+function getProject(req, res) {
+	var projectId = req.params.projectId;
+
+	projectsService.getProject(projectId, function(err, results) {
+		if(err) {
+			res.status(400).send('error: ' + JSON.stringify(err));
+		} else {
+			res.send('OK! ' + JSON.stringify(results));
+		}
+	});
+}
+
 function getProjectWithTasks(req, res) {
 	var projectId = req.params.projectId;
 
@@ -34,8 +46,10 @@ function getProjectWithTasks(req, res) {
 		}
 	});
 }
+
 module.exports = {
 	'addTaskToProject': addTaskToProject,
 	'createProject': createProject,
+	'getProject': getProject,
 	'getProjectWithTasks': getProjectWithTasks
 };

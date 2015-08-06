@@ -16,7 +16,6 @@ function addUserToOrg(orgId, userId, cb) {
 }
 
 function getOrgUsers(orgId, cb) {
-	console.log('service org id: ' + orgId);
 	orgsUsersDao.getUsersByOrg(orgId, cb);
 }
 

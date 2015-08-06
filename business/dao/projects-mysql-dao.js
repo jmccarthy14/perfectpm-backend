@@ -13,6 +13,20 @@ function createProject(project, cb) {
 	});
 }
 
+function getProject(projectId, cb) {
+	pool.getConnection(function onConnection(err, connection) {
+		if(err) {
+			cb(err);
+		} else {
+			connection.query('select * from projects where id = ?', [projectId], function(err, results) {
+				connection.release();
+				cb(err, results);
+			});
+		}
+	});
+}
+
+// TODO(joseph@): Fix
 function getProjectWithTasks(projectId, cb) {
 	pool.getConnection(function onConnection(err, connection) {
 		if(err) {
@@ -28,5 +42,6 @@ function getProjectWithTasks(projectId, cb) {
 
 module.exports = {
 	'createProject': createProject,
+	'getProject': getProject,
 	'getProjectWithTasks': getProjectWithTasks
 }

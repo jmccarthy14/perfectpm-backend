@@ -12,13 +12,17 @@ function createProject(project, cb) {
 function addTaskToProject(projectId, taskId, cb) {
 	projectsTasksDao.createProjectTask(projectId, taskId, cb);
 }
+function getProject(projectId, cb) {
+	projectsDao.getProject(projectId, cb);
+}
 
 function getProjectWithTasks(projectId, cb) {
-	projectsDao.getProjectWithTasks(projectId, cb);
+	projectsTasksDao.getTasksByProject(projectId, cb);
 }
 
 module.exports = {
 	'addTaskToProject': addTaskToProject,
 	'createProject': createProject,
+	'getProject': getProject,
 	'getProjectWithTasks': getProjectWithTasks
 }
