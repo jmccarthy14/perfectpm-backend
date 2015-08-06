@@ -36,4 +36,4 @@ module.exports = {
 	'createOrg': createOrg,
 	'getOrgProjects': getOrgProjects,
 	'getOrgUsers': getOrgUsers
-}
+};

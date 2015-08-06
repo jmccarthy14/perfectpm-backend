@@ -14,4 +14,4 @@ function createUser(user, cb) {
 
 module.exports = {
 	'createUser': createUser
-}
+};

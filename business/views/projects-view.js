@@ -3,7 +3,7 @@ var ppmResponseWrapper = require('../../server/ppm-response');
 
 function createProject(req, res) {
 	projectsService.createProject(req.body, ppmResponseWrapper(res));
-};
+}
 
 function addTaskToProject(req, res) {
 	var projectId = req.params.projectId;

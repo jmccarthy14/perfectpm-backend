@@ -44,4 +44,4 @@ module.exports = {
 	'createProject': createProject,
 	'getProject': getProject,
 	'getProjectWithTasks': getProjectWithTasks
-}
+};

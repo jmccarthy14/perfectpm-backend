@@ -29,4 +29,4 @@ function getUsersByOrg(orgId, cb) {
 module.exports = {
 	'createOrgUser': createOrgUser,
 	'getUsersByOrg': getUsersByOrg
-}
+};

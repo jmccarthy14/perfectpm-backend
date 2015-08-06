@@ -59,4 +59,4 @@ function getOrgIdFromUuid(uuid, cb) {
 module.exports = {
 	'createOrg': createOrg,
 	'getOrgById': getOrgById
-}
+};

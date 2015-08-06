@@ -9,8 +9,8 @@ var ppmResponseWrapper = function(response) {
 		} else {
 			ppmResponse.send(JSON.stringify(results));
 		}	
-	}
-}
+	};
+};
 
 
 module.exports = ppmResponseWrapper;

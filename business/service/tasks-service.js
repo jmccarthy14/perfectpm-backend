@@ -10,4 +10,4 @@ function createTask(task, cb) {
 
 module.exports = {
 	'createTask': createTask
-}
+};

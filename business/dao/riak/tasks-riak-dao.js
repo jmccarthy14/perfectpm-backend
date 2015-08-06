@@ -50,4 +50,4 @@ function saveTask(task, cb) {
 module.exports = {
 	'fetchTask': fetchTask,
 	'saveTask': saveTask
-}
+};
