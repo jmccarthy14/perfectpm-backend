@@ -24,7 +24,19 @@ function addUserToOrg(req, res) {
 	});
 }
 
+function getOrgUsers(req, res) {
+	var orgId = req.params.orgId;
+	orgsService.getOrgUsers(orgId, function(err, results) {
+		if(err) {
+			res.status(400).send('error: ' + JSON.stringify(err));
+		} else {
+			res.send('OK! ' + JSON.stringify(results));
+		}
+	});
+}
+
 module.exports = {
 	'addUserToOrg': addUserToOrg,
-	'createOrg': createOrg
+	'createOrg': createOrg,
+	'getOrgUsers': getOrgUsers
 }

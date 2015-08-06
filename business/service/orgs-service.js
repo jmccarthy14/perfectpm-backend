@@ -15,7 +15,13 @@ function addUserToOrg(orgId, userId, cb) {
 	orgsUsersDao.createOrgUser(orgId, userId, cb);
 }
 
+function getOrgUsers(orgId, cb) {
+	console.log('service org id: ' + orgId);
+	orgsUsersDao.getUsersByOrg(orgId, cb);
+}
+
 module.exports = {
 	'addUserToOrg': addUserToOrg,
-	'createOrg': createOrg
+	'createOrg': createOrg,
+	'getOrgUsers': getOrgUsers
 }

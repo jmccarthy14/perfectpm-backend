@@ -13,7 +13,7 @@ function createOrgUser(orgId, userId, cb) {
 	});
 }
 
-function getUsersByOrg(id, cb) {
+function getUsersByOrg(orgId, cb) {
 	pool.getConnection(function onConnection(err, connection) {
 		if(err) {
 			cb(err);
