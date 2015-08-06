@@ -24,6 +24,30 @@ function addUserToOrg(req, res) {
 	});
 }
 
+function addProjectToOrg(req, res) {
+	var orgId = req.params.orgId;
+	var projectId = req.params.projectId;
+
+	orgsService.addProjectToOrg(orgId, projectId, function(err, results) {
+		if(err) {
+			res.status(400).send('error: ' + JSON.stringify(err));
+		} else {
+			res.send('OK! ' + JSON.stringify(results));
+		}
+	});
+}
+
+function getOrgProjects(req, res) {
+	var orgId = req.params.orgId;
+	orgsService.getOrgProjects(orgId, function(err, results) {
+		if(err) {
+			res.status(400).send('error: ' + JSON.stringify(err));
+		} else {
+			res.send('OK! ' + JSON.stringify(results));
+		}
+	});
+}
+
 function getOrgUsers(req, res) {
 	var orgId = req.params.orgId;
 	orgsService.getOrgUsers(orgId, function(err, results) {
@@ -36,7 +60,9 @@ function getOrgUsers(req, res) {
 }
 
 module.exports = {
+	'addProjectToOrg': addProjectToOrg,
 	'addUserToOrg': addUserToOrg,
 	'createOrg': createOrg,
+	'getOrgProjects': getOrgProjects,
 	'getOrgUsers': getOrgUsers
 }
