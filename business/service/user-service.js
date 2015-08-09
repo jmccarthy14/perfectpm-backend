@@ -1,6 +1,14 @@
 var nodeUuid = require('node-uuid');
 var userDao = require('../dao/users-mysql-dao');
 
+function getUser(userId, cb) {
+    userDao.getUserById(userId, cb);
+}
+
+function getUserTasks(userId, cb) {
+    userDao.getUserTasks(userId, cb);
+}
+
 function createUser(user, cb) {
 	if(user.firstName && user.lastName && user.email) {
 		user.uuid = user.uuid ? user.uuid : nodeUuid.v4();
@@ -13,5 +21,7 @@ function createUser(user, cb) {
 }	
 
 module.exports = {
+    'getUser': getUser,
+    'getUserTasks': getUserTasks,
 	'createUser': createUser
 };

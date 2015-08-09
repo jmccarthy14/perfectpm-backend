@@ -6,6 +6,11 @@ function createOrg(req, res) {
 	orgsService.createOrg(name, ppmResponseWrapper(res));
 }
 
+function getOrgById(req, res) {
+	var orgId = req.params.orgId;
+	orgsService.getOrgById(orgId, ppmResponseWrapper(res));
+}
+
 function addUserToOrg(req, res) {
 	var orgId = req.params.orgId;
 	var userId = req.params.userId;
@@ -30,10 +35,17 @@ function getOrgUsers(req, res) {
 	orgsService.getOrgUsers(orgId, ppmResponseWrapper(res));
 }
 
+function getUserOrgs(req, res) {
+	var userId = req.params.userId;
+	orgsService.getUserOrgs(userId, ppmResponseWrapper(res));
+}
+
 module.exports = {
 	'addProjectToOrg': addProjectToOrg,
 	'addUserToOrg': addUserToOrg,
 	'createOrg': createOrg,
+	'getOrgById': getOrgById,
 	'getOrgProjects': getOrgProjects,
-	'getOrgUsers': getOrgUsers
+	'getOrgUsers': getOrgUsers,
+	'getUserOrgs': getUserOrgs
 };

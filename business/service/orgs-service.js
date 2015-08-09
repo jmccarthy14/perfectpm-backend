@@ -16,8 +16,16 @@ function addUserToOrg(orgId, userId, cb) {
 	orgsUsersDao.createOrgUser(orgId, userId, cb);
 }
 
+function getOrgById(orgId, cb) {
+	orgDao.getOrgById(orgId, cb);
+}
+
 function getOrgUsers(orgId, cb) {
 	orgsUsersDao.getUsersByOrg(orgId, cb);
+}
+
+function getUserOrgs(userId, cb) {
+	orgsUsersDao.getOrgsByUser(userId, cb);
 }
 
 function addProjectToOrg(orgId, projectId, cb) {
@@ -32,6 +40,8 @@ module.exports = {
 	'addProjectToOrg': addProjectToOrg,
 	'addUserToOrg': addUserToOrg,
 	'createOrg': createOrg,
+	'getOrgById': getOrgById,
 	'getOrgProjects': getOrgProjects,
-	'getOrgUsers': getOrgUsers
+	'getOrgUsers': getOrgUsers,
+	'getUserOrgs': getUserOrgs
 };

@@ -13,9 +13,13 @@ app.get('/health', function (req, res) {
     res.send('OK!');
 });
 
+app.get('/users/:userId', views.users.getUser);
+app.get('/users/:userId/tasks', views.users.getUserTasks);
+app.get('/users/:userId/orgs', views.orgs.getUserOrgs);
 app.post('/users', views.users.createUser);
 
 app.post('/orgs', views.orgs.createOrg);
+app.get('/orgs/:orgId', views.orgs.getOrgById);
 app.get('/orgs/:orgId/users', views.orgs.getOrgUsers);
 app.post('/orgs/:orgId/users/:userId', views.orgs.addUserToOrg);
 app.get('/orgs/:orgId/projects', views.orgs.getOrgProjects);

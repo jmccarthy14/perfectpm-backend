@@ -20,7 +20,7 @@ function getProject(projectId, cb) {
 		} else {
 			connection.query('select * from projects where id = ?', [projectId], function(err, results) {
 				connection.release();
-				cb(err, results);
+				cb(err, results.length ? results[0] : results);
 			});
 		}
 	});
@@ -32,10 +32,13 @@ function getProjectWithTasks(projectId, cb) {
 		if(err) {
 			cb(err);
 		} else {
-			connection.query('select * from projects p inner join projects_tasks pt on p.id = pt.project_id inner join tasks t on pt.task_id = t.id where p.id = ?', [projectId], function(err, results) {
-				connection.release();
-				cb(err, results);
-			});
+            getProject(projectId, function(err, results) {    
+                connection.query('select * from projects_tasks pt inner join tasks t on pt.task_id = t.id where pt.project_id = ?', [projectId], function(err, results2) {
+                    connection.release();
+                    results.tasks = results2;
+                    cb(err, ['wtf']);
+                });
+            });
 		}
 	});
 }
