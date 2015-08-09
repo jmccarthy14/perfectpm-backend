@@ -28,7 +28,6 @@ function getUserByUuid(uuid, cb) {
 }
 
 function getUserById(id, cb) {
-    console.log("getting user " + id)
 	pool.getConnection(function onConnection(err, connection) {
 		if(err) {
 			cb(err);
@@ -62,14 +61,13 @@ function getUserTasks(id, cb) {
 		if(err) {
 			cb(err);
 		} else {
-			connection.query('select t.* from users_tasks ut JOIN tasks t ON ut.task_id = t.id where ut.user_id = ?', [id], function(err, results) {
+			connection.query('select t.*, ut.priority from users_tasks ut JOIN tasks t ON ut.task_id = t.id where ut.user_id = ?', [id], function(err, results) {
                 connection.release();
                 cb(err, results);
 			});
 		}
 	});
 }
-
 
 module.exports = {
 	'createUser': createUser,

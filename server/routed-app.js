@@ -15,6 +15,7 @@ app.get('/health', function (req, res) {
 
 app.get('/users/:userId', views.users.getUser);
 app.get('/users/:userId/tasks', views.users.getUserTasks);
+app.post('/users/:userId/tasks/:taskId', views.users.addTaskToUser);
 app.get('/users/:userId/orgs', views.orgs.getUserOrgs);
 app.post('/users', views.users.createUser);
 

@@ -1,5 +1,6 @@
 var nodeUuid = require('node-uuid');
 var userDao = require('../dao/users-mysql-dao');
+var usersTasksDao = require('../dao/users-tasks-mysql-dao');
 
 function getUser(userId, cb) {
     userDao.getUserById(userId, cb);
@@ -7,6 +8,10 @@ function getUser(userId, cb) {
 
 function getUserTasks(userId, cb) {
     userDao.getUserTasks(userId, cb);
+}
+
+function addTaskToUser(userId, taskId, priority, cb) {
+    usersTasksDao.createUserTask(userId, taskId, priority, cb);
 }
 
 function createUser(user, cb) {
@@ -23,5 +28,6 @@ function createUser(user, cb) {
 module.exports = {
     'getUser': getUser,
     'getUserTasks': getUserTasks,
+    'addTaskToUser': addTaskToUser,
 	'createUser': createUser
 };
