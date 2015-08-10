@@ -20,6 +20,10 @@ function getOrgById(orgId, cb) {
 	orgDao.getOrgById(orgId, cb);
 }
 
+function getOrgUser(orgId, userId, cb) {
+	orgsUsersDao.getOrgUser(orgId, userId, cb);
+}
+
 function getOrgUsers(orgId, cb) {
 	orgsUsersDao.getUsersByOrg(orgId, cb);
 }
@@ -41,6 +45,7 @@ module.exports = {
 	'addUserToOrg': addUserToOrg,
 	'createOrg': createOrg,
 	'getOrgById': getOrgById,
+	'getOrgUser': getOrgUser,
 	'getOrgProjects': getOrgProjects,
 	'getOrgUsers': getOrgUsers,
 	'getUserOrgs': getUserOrgs

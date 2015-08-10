@@ -5,7 +5,7 @@ function createProject(project, cb) {
 		if(err) {
 			cb(err);
 		} else {
-			connection.query('insert into projects (org_id,name,description,created_by_user_id) values (?,?,?,?)', [project.orgId, project.name, project.description,project.createdByUserId], function(err, results) {
+			connection.query('insert into projects (org_id,task_list_id,name,description,created_by_user_id) values (?,?,?,?,?)', [project.orgId, project.taskListId, project.name, project.description,project.createdByUserId], function(err, results) {
 				connection.release();
 				cb(err, results);
 			});

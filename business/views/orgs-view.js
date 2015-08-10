@@ -11,6 +11,12 @@ function getOrgById(req, res) {
 	orgsService.getOrgById(orgId, ppmResponseWrapper(res));
 }
 
+function getOrgUser(req, res) {
+	var orgId = req.params.orgId;
+	var userId = req.params.userId;
+	orgsService.getOrgUser(orgId, userId, ppmResponseWrapper(res));
+}
+
 function addUserToOrg(req, res) {
 	var orgId = req.params.orgId;
 	var userId = req.params.userId;
@@ -45,6 +51,7 @@ module.exports = {
 	'addUserToOrg': addUserToOrg,
 	'createOrg': createOrg,
 	'getOrgById': getOrgById,
+	'getOrgUser': getOrgUser,
 	'getOrgProjects': getOrgProjects,
 	'getOrgUsers': getOrgUsers,
 	'getUserOrgs': getUserOrgs

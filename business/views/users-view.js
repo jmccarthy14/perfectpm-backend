@@ -16,7 +16,8 @@ function addTaskToUser(req, res) {
 function createUser(req, res) {
 	// Minimal validation here, on api layer.
 	var user = req.body;
-	userService.createUser(user, ppmResponseWrapper(res));
+    var orgId = req.body.orgId;
+	userService.createUser(user, orgId, ppmResponseWrapper(res));
 }
 
 module.exports = {

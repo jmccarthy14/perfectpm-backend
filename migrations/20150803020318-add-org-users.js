@@ -32,7 +32,8 @@ exports.up = function(db, callback) {
 					user_id: 'id'
 				}
 			}	
-		}
+		},
+		task_list_id: { type: 'int', notNull: true },
 	}, callback);
 };
 
