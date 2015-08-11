@@ -13,8 +13,8 @@ function createUserTask(userId, taskId, priority, cb) {
             });
         }
     });
-};
+}
 
 module.exports = {
-    'createUserTask': createUserTask,
+    'createUserTask': createUserTask
 };

@@ -18,12 +18,12 @@ function getOrgUser(orgId, userId, cb) {
 		if(err) {
 			cb(err);
 		} else {
-			connection.query('select * from orgs_users ou inner join users u on ou.user_id = u.id where ou.org_id = ?', [orgId], function(err, results) {
+			connection.query('select * from orgs_users ou inner join users u on ou.user_id = u.id where ou.org_id = ? and ou.user_id = ?', [orgId, userId], function(err, results) {
 				connection.release();
 				if (results.length) {
 					cb(err, results[0]);
 				} else {
-					cb("Org user not found");
+					cb('Org user not found');
 				}
 			});
 		}

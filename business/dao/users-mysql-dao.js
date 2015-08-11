@@ -33,9 +33,23 @@ function getUserById(id, cb) {
 			cb(err);
 		} else {
 			connection.query('select * from users where id = ?', [id], function(err, results) {
-                connection.release();
-                var result = results.length ? results[0] : undefined;
-                cb(err, result);
+				connection.release();
+				var result = results.length ? results[0] : undefined;
+				cb(err, result);
+			});
+		}
+	});
+}
+
+function getUserByEmail(email, cb) {
+	pool.getConnection(function onConnection(err, connection) {
+		if(err) {
+			cb(err);
+		} else {
+			connection.query('select * from users where email = ?', [email], function(err, results) {
+				connection.release();
+				var result = results.length ? results[0] : undefined;
+				cb(err, result);
 			});
 		}
 	});
@@ -71,7 +85,8 @@ function getUserTasks(id, cb) {
 
 module.exports = {
 	'createUser': createUser,
-	'getUserById': getUserById,
+    'getUserById': getUserById,
+    'getUserByEmail': getUserByEmail,
 	'getUserIdFromUuid': getUserIdFromUuid,
 	'getUserByUuid': getUserByUuid,
     'getUserTasks': getUserTasks

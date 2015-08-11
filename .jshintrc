@@ -5,6 +5,6 @@
   "latedef": true,
   "quotmark": true,
   "undef": true,
-  "unused": true,
+  "unused": false,
   "trailing": true
 }

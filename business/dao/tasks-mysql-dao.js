@@ -67,11 +67,11 @@ function getTaskList(taskListId, cb) {
 					var taskList = taskListResults[0];
 					connection.query('select t.*, tlt.priority from task_list_tasks tlt JOIN tasks t ON tlt.task_id = t.id where task_list_id = ?', [taskListId], function(err, tasksResults) {
 						connection.release();
-						taskList.tasks = tasksResults
+						taskList.tasks = tasksResults;
 						cb(err, taskList);
 					});
 				} else {
-					cb("No task list found for id " + taskListId);
+					cb('No task list found for id ' + taskListId);
 				}
 				
 			});

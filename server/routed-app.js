@@ -13,6 +13,10 @@ app.get('/health', function (req, res) {
     res.send('OK!');
 });
 
+// auth, not really RESTful...
+app.post('/register', views.auth.register);
+app.get('/auth/:email', views.auth.login);
+
 // users
 app.get('/users/:userId', views.users.getUser);
 app.get('/users/:userId/orgs', views.orgs.getUserOrgs);
