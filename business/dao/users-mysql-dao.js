@@ -5,7 +5,7 @@ function createUser(user, cb) {
 		if(err) {
 			cb(err);
 		} else {
-			connection.query('insert into users (uuid, first_name, last_name, email) values (?,?,?,?)', [user.uuid, user.firstName, user.lastName, user.email], function(err, results) {
+			connection.query('insert into users (uuid, first_name, last_name, email) values (?,?,?,?)', [user.uuid, user.first_name, user.last_name, user.email], function(err, results) {
 				connection.release();
 				cb(err, results);
 			});

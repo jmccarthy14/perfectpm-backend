@@ -21,11 +21,23 @@ function getTaskList(taskListId, cb) {
 }
 
 function addTaskToList(taskListId, taskId, priority, cb) {
-	tasksDao.addTaskToList(taskListId, taskId, priority, cb);
+	tasksDao.shiftTaskListPriorities(taskListId, priority, function(err, results) {
+		if (err) {
+			cb(err, results);
+		} else {
+			tasksDao.addTaskToList(taskListId, taskId, priority, cb);
+		}
+	});
 }
 
 function updateTaskInList(taskListId, taskId, priority, cb) {
-	tasksDao.updateTaskInList(taskListId, taskId, priority, cb);
+    tasksDao.shiftTaskListPriorities(taskListId, priority, function(err, results) {
+        if (err) {
+            cb(err, results);
+        } else {
+            tasksDao.updateTaskInList(taskListId, taskId, priority, cb);
+        }
+    });
 }
 
 module.exports = {

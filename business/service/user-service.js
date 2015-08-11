@@ -17,7 +17,7 @@ function addTaskToUser(userId, taskId, priority, cb) {
 }
 
 function createUser(user, orgId, cb) {
-	if(user.firstName && user.lastName && user.email) {
+	if(user.first_name && user.last_name && user.email) {
 		user.uuid = user.uuid ? user.uuid : nodeUuid.v4();
 		// this should be a transaction
 		userDao.createUser(user, function(error, userResults) { 
@@ -40,7 +40,6 @@ function createUser(user, orgId, cb) {
 				});
 			}
 		});
-		
 	} else {
 		cb(new Error('Please include all required data in the user object'));
 	}

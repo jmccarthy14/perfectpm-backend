@@ -93,6 +93,19 @@ function addTaskToList(taskListId, taskId, priority, cb) {
 	});
 }
 
+function shiftTaskListPriorities(taskListId, atPriority, cb) {
+	pool.getConnection(function onConnection(err, connection) {
+		if (err) {
+			cb(err);
+		} else {
+			connection.query('update task_list_tasks set priority = priority + 1 where task_list_id = ? and priority >= ?', [taskListId, atPriority], function (err, results) {
+				connection.release();
+				cb(err, results);
+			});
+		}
+	});
+}
+
 function updateTaskInList(taskListId, taskId, priority, cb) {
 	pool.getConnection(function onConnection(err, connection) {
 		if(err) {
@@ -113,5 +126,6 @@ module.exports = {
 	'fetchTaskById': fetchTaskById,
 	'getTaskList': getTaskList,
 	'addTaskToList': addTaskToList,
+	'shiftTaskListPriorities': shiftTaskListPriorities,
 	'updateTaskInList': updateTaskInList
 };
