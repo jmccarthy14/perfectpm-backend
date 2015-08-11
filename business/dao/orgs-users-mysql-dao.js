@@ -48,7 +48,7 @@ function getOrgsByUser(userId, cb) {
 		if(err) {
 			cb(err);
 		} else {
-			connection.query('select * from orgs_users ou inner join users u on ou.user_id = u.id where ou.user_id = ?', [userId], function(err, results) {
+			connection.query('select o.* from orgs_users ou inner join orgs o on ou.org_id = o.id where ou.user_id = ?', [userId], function(err, results) {
 				connection.release();
 				cb(err, results);
 			});
